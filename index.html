@@ -1,13 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="zh-CN">
   <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testools</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Testools 是一个极简静态测试用户数据生成器，可生成姓名、生日、手机号、身份证号和银行卡号。"
+    />
+    <title>Testools · 测试用户生成器</title>
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <script src="./assets/app.js" defer></script>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+    <header class="site-header" aria-label="站点导航">
+      <a class="brand" href="#top" aria-label="Testools 首页">Testools</a>
+      <span class="header-note">Static, private, instant.</span>
+    </header>
+
+    <main id="top" class="page-shell">
+      <section class="hero" aria-labelledby="page-title">
+        <p class="eyebrow">Test user profile</p>
+        <h1 id="page-title">生成一位干净可用的测试用户。</h1>
+        <p class="hero-copy">
+          一个纯静态、无依赖的小工具。所有数据都在浏览器本地生成，不上传、不保存，只为测试场景快速准备模拟用户信息。
+        </p>
+      </section>
+
+      <section class="profile-area" aria-label="测试用户信息">
+        <article class="profile-card" aria-live="polite">
+          <div class="card-topline">
+            <span>Test profile</span>
+            <output id="profile-id">#0001</output>
+          </div>
+
+          <div class="identity-panel">
+            <div class="avatar" id="avatar" aria-hidden="true">测</div>
+            <div class="identity-copy-group">
+              <p class="field-label">姓名</p>
+              <h2 id="name">-</h2>
+            </div>
+            <button class="field-copy identity-copy" type="button" data-copy-field="name" aria-label="复制姓名">
+              <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                <path d="M7 7.5C7 6.67 7.67 6 8.5 6h5c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5v-7Z" />
+                <path d="M5 12.5H4.5C3.67 12.5 3 11.83 3 11V4.5C3 3.67 3.67 3 4.5 3H11c.83 0 1.5.67 1.5 1.5V5" />
+              </svg>
+            </button>
+          </div>
+
+          <dl class="field-grid">
+            <div class="field-item">
+              <dt>出生日期</dt>
+              <dd id="birthday">-</dd>
+              <button class="field-copy" type="button" data-copy-field="birthday" aria-label="复制出生日期">
+                <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                  <path d="M7 7.5C7 6.67 7.67 6 8.5 6h5c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5v-7Z" />
+                  <path d="M5 12.5H4.5C3.67 12.5 3 11.83 3 11V4.5C3 3.67 3.67 3 4.5 3H11c.83 0 1.5.67 1.5 1.5V5" />
+                </svg>
+              </button>
+            </div>
+            <div class="field-item">
+              <dt>手机号码</dt>
+              <dd id="phone">-</dd>
+              <button class="field-copy" type="button" data-copy-field="phoneNumber" aria-label="复制手机号码">
+                <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                  <path d="M7 7.5C7 6.67 7.67 6 8.5 6h5c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5v-7Z" />
+                  <path d="M5 12.5H4.5C3.67 12.5 3 11.83 3 11V4.5C3 3.67 3.67 3 4.5 3H11c.83 0 1.5.67 1.5 1.5V5" />
+                </svg>
+              </button>
+            </div>
+            <div class="field-item field-wide">
+              <dt>身份证号</dt>
+              <dd id="id-card">-</dd>
+              <button class="field-copy" type="button" data-copy-field="idCardNumber" aria-label="复制身份证号">
+                <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                  <path d="M7 7.5C7 6.67 7.67 6 8.5 6h5c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5v-7Z" />
+                  <path d="M5 12.5H4.5C3.67 12.5 3 11.83 3 11V4.5C3 3.67 3.67 3 4.5 3H11c.83 0 1.5.67 1.5 1.5V5" />
+                </svg>
+              </button>
+            </div>
+            <div class="field-item field-wide">
+              <dt>银行卡号</dt>
+              <dd id="bank-card">-</dd>
+              <button class="field-copy" type="button" data-copy-field="bankCardNumber" aria-label="复制银行卡号">
+                <svg viewBox="0 0 20 20" aria-hidden="true" focusable="false">
+                  <path d="M7 7.5C7 6.67 7.67 6 8.5 6h5c.83 0 1.5.67 1.5 1.5v7c0 .83-.67 1.5-1.5 1.5h-5c-.83 0-1.5-.67-1.5-1.5v-7Z" />
+                  <path d="M5 12.5H4.5C3.67 12.5 3 11.83 3 11V4.5C3 3.67 3.67 3 4.5 3H11c.83 0 1.5.67 1.5 1.5V5" />
+                </svg>
+              </button>
+            </div>
+          </dl>
+
+          <div class="card-actions">
+            <button id="generate-button" class="primary-button" type="button">生成新用户</button>
+            <button id="copy-button" class="secondary-button" type="button">复制 JSON</button>
+            <span id="copy-status" class="copy-status" role="status" aria-live="polite"></span>
+          </div>
+        </article>
+      </section>
+    </main>
   </body>
 </html>
